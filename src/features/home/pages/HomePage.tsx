@@ -21,7 +21,7 @@ export const HomePage = () => {
 
                 <button
                     onClick={handleLogout}
-                    className="rounded-lg bg-yellow-200 px-4 py-2 hover:bg-green-300"
+                    className="rounded-lg bg-green-200 px-4 py-2 hover:bg-green-300"
                 >
                     Logout
                 </button>

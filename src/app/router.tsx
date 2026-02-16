@@ -1,18 +1,17 @@
-import { createBrowserRouter } from 'react-router-dom';
-import { LandingPage } from '../features/landing/pages/LandingPage';
-import { LoginPage } from '../features/auth/pages/LoginPage';
-import { HomePage } from '../features/home/pages/HomePage';
-import { ProtectedRoute } from './ProtectedRoute';
+import { createBrowserRouter } from "react-router-dom";
+import { LandingPage } from "../features/landing/pages/LandingPage";
+import { LoginPage } from "../features/auth/pages/LoginPage";
+import { HomePage } from "../features/home/pages/HomePage";
+import { ProtectedRoute } from "./ProtectedRoute";
 import { PublicRoute } from "./PublicRoute";
+
 export const router = createBrowserRouter([
-
-
     {
-        path: '/',
-        element: <LandingPage/>
+        path: "/",
+        element: <LandingPage />,
     },
     {
-        path: '/login',
+        path: "/login",
         element: (
             <PublicRoute>
                 <LoginPage />
@@ -20,11 +19,11 @@ export const router = createBrowserRouter([
         ),
     },
     {
-        path: '/home',
+        path: "/home",
         element: (
             <ProtectedRoute>
                 <HomePage />
             </ProtectedRoute>
-        )
-    }
+        ),
+    },
 ]);

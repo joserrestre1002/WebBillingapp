@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const navigate = useNavigate();
 
     return (
@@ -14,17 +15,47 @@ export const Navbar = () => {
                     onClick={() => navigate("/")}
                     className="text-2xl font-bold text-emerald-400 cursor-pointer"
                 >
-                    Cree en ti Centro pscicoterapeutico
+                    BillingApp
                 </h1>
 
                 {/* Desktop Menu */}
-                <nav className="hidden items-center gap-8 md:flex">
-                    <a href="#features" className="transition hover:text-emerald-400">
-                        Features
-                    </a>
-                    <a href="#pricing" className="transition hover:text-emerald-400">
-                        Pricing
-                    </a>
+                <nav className="relative hidden items-center gap-8 md:flex">
+
+                    {/* Dropdown Trigger */}
+                    <div className="relative">
+                        <button
+                            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                            className="flex items-center gap-1 hover:text-emerald-400 transition"
+                        >
+                            Features
+                            <span className="text-sm">▾</span>
+                        </button>
+
+                        {/* Dropdown Menu */}
+                        {isDropdownOpen && (
+                            <div className="absolute top-10 left-0 w-48 rounded-xl border border-slate-700 bg-slate-900 py-2 shadow-lg">
+                                <button
+                                    onClick={() => {
+                                        navigate("/login");
+                                        setIsDropdownOpen(false);
+                                    }}
+                                    className="block w-full text-left px-4 py-2 hover:bg-slate-800"
+                                >
+                                    Facturación
+                                </button>
+
+                                <button
+                                    onClick={() => {
+                                        navigate("/login");
+                                        setIsDropdownOpen(false);
+                                    }}
+                                    className="block w-full text-left px-4 py-2 hover:bg-slate-800"
+                                >
+                                    Clientes
+                                </button>
+                            </div>
+                        )}
+                    </div>
 
                     <button
                         onClick={() => navigate("/login")}
@@ -46,12 +77,20 @@ export const Navbar = () => {
             {/* Mobile Menu */}
             {isOpen && (
                 <div className="space-y-4 bg-slate-900 px-6 pb-4 md:hidden">
-                    <a href="#features" className="block">
-                        Features
-                    </a>
-                    <a href="#pricing" className="block">
-                        Pricing
-                    </a>
+                    <button
+                        onClick={() => navigate("/login")}
+                        className="block w-full text-left"
+                    >
+                        Facturación
+                    </button>
+
+                    <button
+                        onClick={() => navigate("/login")}
+                        className="block w-full text-left"
+                    >
+                        Clientes
+                    </button>
+
                     <button
                         onClick={() => navigate("/login")}
                         className="w-full bg-emerald-500 py-2 rounded-lg"

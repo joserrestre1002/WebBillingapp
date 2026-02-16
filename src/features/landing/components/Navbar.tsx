@@ -14,7 +14,7 @@ export const Navbar = () => {
                     onClick={() => navigate("/")}
                     className="text-2xl font-bold text-emerald-400 cursor-pointer"
                 >
-                    BillingApp
+                    Cree en ti Centro pscicoterapeutico
                 </h1>
 
                 {/* Desktop Menu */}
